@@ -46,16 +46,23 @@ input[type="file"] { display: none; }
 .mini { opacity: .8; font-size: 14px; margin-top: 14px; }
 .hud {
   position: absolute;
-  top: max(34px, env(safe-area-inset-top));
-  left: 0;
-  right: 0;
-  z-index: 8;
+  top: max(24px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, 80vw);
+
   display: flex;
   justify-content: space-between;
-  padding: 10px 28px;
+
+  z-index: 8;
+
   font-size: clamp(18px, 3vw, 30px);
   font-weight: 1000;
-  text-shadow: 0 0 8px #000, 0 0 14px #00e5ff;
+
+  text-shadow:
+    0 0 8px #000,
+    0 0 14px #00e5ff;
+
   pointer-events: none;
 }
 .countdown-text { font-size: clamp(90px, 20vw, 200px); font-weight: 1000; color: #fff; text-shadow: 0 0 20px #00e5ff, 0 0 44px #ff4dca; animation: pop .65s ease-out infinite; }
