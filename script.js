@@ -96,6 +96,7 @@ async function init() {
   };
 
   bindUI();
+  showOnly('title');
   requestAnimationFrame(loop);
 }
 
