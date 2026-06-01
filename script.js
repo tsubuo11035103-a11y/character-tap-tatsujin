@@ -172,6 +172,7 @@ function showTitle() {
   showOnly('title');
   hud.classList.add('hidden');
   backToTitleBtn.classList.add('hidden');
+  messageLayer.classList.add('hidden');
   targets = [];
   blackEventActive = false;
   blackTarget = null;
