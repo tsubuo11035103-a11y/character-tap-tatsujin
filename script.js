@@ -17,6 +17,7 @@ const ASSETS = {
 
 const SECRET_WORD = 'SECRET-TSUBUO-2026';
 const GAME_SECONDS = 30;
+const backToTitleBtn = document.getElementById('backToTitleBtn');
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -146,6 +147,9 @@ function bindUI() {
       showMessage('画像セット！', 1000);
     });
   };
+  backToTitleBtn.onclick = () => {
+  showTitle();
+};
   canvas.addEventListener('pointerdown', onPointerDown);
 }
 
@@ -167,7 +171,10 @@ function showTitle() {
   stopAllAudio();
   showOnly('title');
   hud.classList.add('hidden');
+  backToTitleBtn.classList.add('hidden');
   targets = [];
+  blackEventActive = false;
+  blackTarget = null;
 }
 
 function startCountdown() {
@@ -194,8 +201,10 @@ function startCountdown() {
 
 function beginGame() {
   state = 'playing';
+  demoTarget = null;
   showOnly(null);
   hud.classList.remove('hidden');
+  backToTitleBtn.classList.remove('hidden');
   score = 0; combo = 0; maxCombo = 0; timeLeft = GAME_SECONDS;
   targets = [];
   spawnTimer = 0;
@@ -214,6 +223,7 @@ function endGame() {
   stopAudio('boss');
   targets = [];
   hud.classList.add('hidden');
+  backToTitleBtn.classList.add('hidden');
   finalScore.textContent = score;
   rankText.textContent = getRank(score);
   showOnly('result');
