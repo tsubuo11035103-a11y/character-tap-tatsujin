@@ -122,18 +122,28 @@ function bindUI() {
   document.getElementById('homeBtn').onclick = () => showTitle();
   document.getElementById('secretBtn').onclick = () => { play('decide'); secretArea.classList.toggle('hidden'); };
   document.getElementById('unlockBtn').onclick = () => {
-    const v = document.getElementById('secretInput').value.trim();
-    if (v === SECRET_WORD) {
-      unlocked = true;
-      play('decide');
-      unlockedArea.classList.remove('hidden');
-      secretArea.classList.toggle('hidden');
-document.querySelector('.title-panel .mini')?.classList.toggle('hidden', !secretArea.classList.contains('hidden'));
-      showMessage('合言葉OK！', 1100);
-    } else {
-      showMessage('ちがうよ！', 900);
-    }
-  };
+  const v = document.getElementById('secretInput').value.trim();
+  const msg = document.getElementById('secretMessage');
+
+  if (!v) {
+    msg.textContent = '合言葉を入れてね！';
+    play('decide');
+    return;
+  }
+
+  if (v === SECRET_WORD) {
+    unlocked = true;
+    play('decide');
+    msg.textContent = '解放したよ！';
+    unlockedArea.classList.remove('hidden');
+    secretArea.classList.add('hidden');
+    document.querySelector('.title-panel .mini')?.classList.remove('hidden');
+    showMessage('合言葉OK！', 1100);
+  } else {
+    msg.textContent = '合言葉がちがうよ！';
+    play('decide');
+  }
+};
   soundBtn.onclick = () => {
     soundOn = !soundOn;
     soundBtn.textContent = `効果音：${soundOn ? 'ON' : 'OFF'}`;
