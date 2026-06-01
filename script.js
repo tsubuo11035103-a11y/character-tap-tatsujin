@@ -178,7 +178,6 @@ function showTitle() {
   blackEventActive = false;
   blackTarget = null;
 }
-
 function startCountdown() {
   play('decide');
   stopAllAudio();
