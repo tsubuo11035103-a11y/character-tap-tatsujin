@@ -26,10 +26,21 @@
         <button id="startBtn" class="primary">スタート</button>
         <button id="secretBtn">合言葉入力</button>
         <button id="soundBtn">効果音：ON</button>
-        <div id="secretArea" class="secret-area hidden">
-  <input id="secretInput" type="password" placeholder="合言葉" autocomplete="off" />
-  <button id="unlockBtn">解放</button>
-  <div id="secretMessage" class="secret-message"></div>
+        <div id="secretArea" class="secret-modal hidden">
+  <div class="secret-card">
+    <button id="closeSecretBtn" class="close-btn">✕</button>
+
+    <input
+      id="secretInput"
+      type="password"
+      placeholder="合言葉"
+      autocomplete="off"
+    />
+
+    <button id="unlockBtn">解放</button>
+
+    <div id="secretMessage" class="secret-message"></div>
+  </div>
 </div>
 
 <div id="unlockedArea" class="unlocked-area hidden">
