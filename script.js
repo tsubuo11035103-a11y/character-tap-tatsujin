@@ -458,10 +458,17 @@ function flyAwayAnimation(x, y) {
     if (img) ctx.drawImage(img, -size/2, -size/2, size, size);
     ctx.restore();
     ctx.font = `${Math.max(24, W * 0.04)}px system-ui`;
+
     if (p > 0.9) {
-  ctx.font = `${Math.max(32, W * 0.05)}px system-ui`;
+  ctx.save();
+  ctx.globalAlpha = (p - 0.9) * 10;
+
+  ctx.font = `${Math.max(48, W * 0.07)}px system-ui`;
   ctx.fillText('✨', nx, ny);
+
+  ctx.restore();
 }
+    
     if (p < 1 && state === 'playing') requestAnimationFrame(anim);
   }
   requestAnimationFrame(anim);
