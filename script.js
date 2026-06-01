@@ -120,7 +120,21 @@ function bindUI() {
   document.getElementById('startBtn').onclick = () => startCountdown();
   document.getElementById('retryBtn').onclick = () => startCountdown();
   document.getElementById('homeBtn').onclick = () => showTitle();
-  document.getElementById('secretBtn').onclick = () => { play('decide'); secretArea.classList.toggle('hidden'); };
+  document.getElementById('secretBtn').onclick = () => {
+  play('decide');
+  secretArea.classList.remove('hidden');
+};
+
+document.getElementById('closeSecretBtn').onclick = () => {
+  play('decide');
+  secretArea.classList.add('hidden');
+};
+
+secretArea.addEventListener('click', (e) => {
+  if (e.target === secretArea) {
+    secretArea.classList.add('hidden');
+  }
+});
   document.getElementById('unlockBtn').onclick = () => {
   const v = document.getElementById('secretInput').value.trim();
   const msg = document.getElementById('secretMessage');
