@@ -460,13 +460,8 @@ function flyAwayAnimation(x, y) {
     ctx.font = `${Math.max(24, W * 0.04)}px system-ui`;
 
     if (p > 0.9) {
-  ctx.save();
-  ctx.globalAlpha = (p - 0.9) * 10;
-
-  ctx.font = `${Math.max(48, W * 0.07)}px system-ui`;
+  ctx.font = `${Math.max(32, W * 0.05)}px system-ui`;
   ctx.fillText('✨', nx, ny);
-
-  ctx.restore();
 }
     
     if (p < 1 && state === 'playing') requestAnimationFrame(anim);
