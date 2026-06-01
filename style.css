@@ -331,3 +331,30 @@ input[type="file"] { display: none; }
     overflow: hidden;
   }
 }
+@media (orientation: landscape) and (max-height: 520px) {
+  .secret-area:not(.hidden) {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, 80vw);
+    z-index: 60;
+
+    padding: 18px;
+    border: 2px solid #00e5ff;
+    border-radius: 22px;
+    background: rgba(5, 6, 21, .94);
+    box-shadow: 0 0 28px rgba(0,229,255,.45);
+  }
+
+  .secret-area input {
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  .secret-area button {
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 16px;
+  }
+}
