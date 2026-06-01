@@ -207,6 +207,7 @@ function beginGame() {
   backToTitleBtn.classList.remove('hidden');
   score = 0; combo = 0; maxCombo = 0; timeLeft = GAME_SECONDS;
   targets = [];
+  spawnTarget(false);
   spawnTimer = 0;
   blackEventDone = false;
   blackEventActive = false;
@@ -259,7 +260,7 @@ function loop(ms) {
   const dt = Math.min((ms - lastMs) / 1000, 0.05) || 0;
   lastMs = ms;
   drawBackground(dt);
-  if (state === 'title') drawDemo(dt, ms);
+  //if (state === 'title') drawDemo(dt, ms);
   if (state === 'playing') updateGame(dt, ms);
   requestAnimationFrame(loop);
 }
