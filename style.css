@@ -46,7 +46,7 @@ input[type="file"] { display: none; }
 .mini { opacity: .8; font-size: 14px; margin-top: 14px; }
 .hud {
   position: absolute;
-  top: max(24px, env(safe-area-inset-top));
+  top: max(12px, env(safe-area-inset-top));
   left: 50%;
   transform: translateX(-50%);
   width: min(900px, 80vw);
