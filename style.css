@@ -106,3 +106,14 @@ input[type="file"] { display: none; }
   border: 2px solid rgba(0,229,255,.75);
   box-shadow: 0 0 14px rgba(0,229,255,.35);
 }
+#gameCanvas {
+  pointer-events: auto;
+}
+
+.screen {
+  pointer-events: auto;
+}
+
+.screen:not(.show) {
+  pointer-events: none;
+}
