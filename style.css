@@ -307,3 +307,27 @@ input[type="file"] { display: none; }
     font-size: 15px;
   }
 }
+@media (orientation: landscape) and (max-height: 520px) {
+  .secret-area,
+  .unlocked-area {
+    margin-top: 6px;
+  }
+
+  .secret-area input {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .secret-area button,
+  .unlocked-area button,
+  .unlocked-area .file-label {
+    padding: 8px 12px;
+    margin: 5px auto;
+    font-size: 14px;
+  }
+
+  .title-panel {
+    max-height: calc(100dvh - 12px);
+    overflow: hidden;
+  }
+}
