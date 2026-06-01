@@ -27,6 +27,8 @@
         <button id="secretBtn">合言葉入力</button>
         <button id="soundBtn">効果音：ON</button>
         <div id="secretArea" class="secret-area hidden">
+  <input id="secretInput" type="password" placeholder="合言葉" autocomplete="off" />
+  <button id="unlockBtn">解放</button>
   <div id="secretMessage" class="secret-message"></div>
 </div>
 
@@ -37,18 +39,8 @@
   </label>
   <button id="hardBtn">高難易度：OFF</button>
 </div>
-          <input id="secretInput" type="password" placeholder="合言葉" autocomplete="off" />
-          <button id="unlockBtn">解放</button>
-        </div>
-        <div id="unlockedArea" class="unlocked-area hidden">
-          <label class="file-label">
-            画像をえらぶ
-            <input id="imageInput" type="file" accept="image/*" />
-          </label>
-          <button id="hardBtn">高難易度：OFF</button>
-        </div>
-        <p class="mini">何度でも遊べます</p>
-      </div>
+
+<p class="mini">何度でも遊べます</p>
     </section>
 
     <section id="countdownScreen" class="screen">
