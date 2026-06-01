@@ -1,6 +1,14 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #050615; color: #fff; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
-#app { position: relative; width: 100vw; height: 100dvh; background: #050615; }
+#app {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  background: #050615;
+}
 #gameCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .screen {
   position: absolute;
