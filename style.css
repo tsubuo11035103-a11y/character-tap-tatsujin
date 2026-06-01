@@ -358,3 +358,11 @@ input[type="file"] { display: none; }
     font-size: 16px;
   }
 }
+.secret-message {
+  min-height: 22px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffe66d;
+  text-shadow: 0 0 10px #ff4dca;
+}
