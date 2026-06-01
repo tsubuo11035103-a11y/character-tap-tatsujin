@@ -17,7 +17,6 @@ const ASSETS = {
 
 const SECRET_WORD = 'SECRET-TSUBUO-2026';
 const GAME_SECONDS = 30;
-const backToTitleBtn = document.getElementById('backToTitleBtn');
 
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -36,6 +35,7 @@ const soundBtn = document.getElementById('soundBtn');
 const secretArea = document.getElementById('secretArea');
 const unlockedArea = document.getElementById('unlockedArea');
 const hardBtn = document.getElementById('hardBtn');
+const backToTitleBtn = document.getElementById('backToTitleBtn');
 
 let W = 0, H = 0, DPR = 1;
 let images = { bg: null, tsubuo: [], black: [], custom: null };
