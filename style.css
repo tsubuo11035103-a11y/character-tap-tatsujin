@@ -9,10 +9,12 @@ html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; font-family
   align-items: center;
   justify-content: center;
   z-index: 10;
-  padding: max(8px, env(safe-area-inset-top)) 12px max(8px, env(safe-area-inset-bottom));
-  overflow: hidden;
+  padding: 16px;
 }
 
+.screen.show {
+  display: flex;
+}
 .panel {
   width: min(520px, 92vw);
   max-height: calc(100dvh - 24px);
