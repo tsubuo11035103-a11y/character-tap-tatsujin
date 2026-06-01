@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>キャラタップの達人</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="rotateNotice" class="rotate-notice">
+    <div class="rotate-card">
+      <div class="rotate-icon">📱↔️</div>
+      <h2>スマホを横にしてね！</h2>
+      <p>横画面で遊ぶと、ネオンロードがよく見えるよ。</p>
+    </div>
+  </div>
+
+  <main id="app">
+    <canvas id="gameCanvas"></canvas>
+
+    <section id="titleScreen" class="screen show">
+      <div class="panel title-panel">
+        <h1>キャラタップの達人</h1>
+        <p>好きなキャラをタップしてあそぼう！</p>
+        <button id="startBtn" class="primary">スタート</button>
+        <button id="secretBtn">合言葉入力</button>
+        <button id="soundBtn">効果音：ON</button>
+        <div id="secretArea" class="secret-area hidden">
+          <input id="secretInput" type="password" placeholder="合言葉" autocomplete="off" />
+          <button id="unlockBtn">解放</button>
+        </div>
+        <div id="unlockedArea" class="unlocked-area hidden">
+          <label class="file-label">
+            画像をえらぶ
+            <input id="imageInput" type="file" accept="image/*" />
+          </label>
+          <button id="hardBtn">高難易度：OFF</button>
+        </div>
+        <p class="mini">無料版は何度でも遊べます</p>
+      </div>
+    </section>
+
+    <section id="countdownScreen" class="screen">
+      <div id="countdownText" class="countdown-text">3</div>
+    </section>
+
+    <section id="gameHud" class="hud hidden">
+      <div>スコア <span id="scoreText">0</span></div>
+      <div>のこり <span id="timeText">30</span>秒</div>
+    </section>
+
+    <section id="messageLayer" class="message-layer hidden"></section>
+
+    <section id="resultScreen" class="screen">
+      <div class="panel result-panel">
+        <h2>おしまい！</h2>
+        <div class="score-big"><span id="finalScore">0</span> タップ！</div>
+        <div class="rank-box">
+          <div class="rank-label">ランク</div>
+          <div id="rankText" class="rank-text">はじめてさん</div>
+        </div>
+        <button id="retryBtn" class="primary">もういっかい！</button>
+        <button id="homeBtn">タイトルへ</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
