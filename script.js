@@ -102,12 +102,17 @@ async function init() {
 
 function resize() {
   DPR = Math.min(window.devicePixelRatio || 1, 2);
-  W = window.innerWidth;
-  H = window.innerHeight;
+
+  const rect = document.getElementById('app').getBoundingClientRect();
+
+  W = rect.width;
+  H = rect.height;
+
   canvas.width = Math.floor(W * DPR);
   canvas.height = Math.floor(H * DPR);
   canvas.style.width = W + 'px';
   canvas.style.height = H + 'px';
+
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 }
 
