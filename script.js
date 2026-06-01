@@ -127,7 +127,8 @@ function bindUI() {
       unlocked = true;
       play('decide');
       unlockedArea.classList.remove('hidden');
-      secretArea.classList.add('hidden');
+      secretArea.classList.toggle('hidden');
+document.querySelector('.title-panel .mini')?.classList.toggle('hidden', !secretArea.classList.contains('hidden'));
       showMessage('合言葉OK！', 1100);
     } else {
       showMessage('ちがうよ！', 900);
