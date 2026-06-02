@@ -424,3 +424,18 @@ input[type="file"] { display: none; }
 .note-link:hover {
   text-decoration: underline;
 }
+.best-score-text {
+  margin: 4px 0 8px;
+  font-size: 15px;
+  font-weight: 900;
+  color: #ffe66d;
+  text-shadow: 0 0 8px #ff4dca;
+}
+
+.new-record-text {
+  margin: 4px 0 8px;
+  font-size: 18px;
+  font-weight: 1000;
+  color: #ff4dca;
+  text-shadow: 0 0 10px #00e5ff;
+}
