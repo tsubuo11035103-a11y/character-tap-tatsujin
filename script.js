@@ -37,6 +37,8 @@ const secretArea = document.getElementById('secretArea');
 const unlockedArea = document.getElementById('unlockedArea');
 const hardBtn = document.getElementById('hardBtn');
 const backToTitleBtn = document.getElementById('backToTitleBtn');
+const bestScoreText = document.getElementById('bestScoreText');
+const newRecordText = document.getElementById('newRecordText');
 
 let W = 0, H = 0, DPR = 1;
 let images = { bg: null, tsubuo: [], black: [], blackDefeat: null, custom: null };
@@ -303,6 +305,16 @@ function endGame() {
   backToTitleBtn.classList.add('hidden');
   finalScore.textContent = score;
   rankText.textContent = getRank(score);
+  const bestScore = Number(localStorage.getItem('bestScore') || 0);
+
+if (score > bestScore) {
+  localStorage.setItem('bestScore', String(score));
+  bestScoreText.textContent = `ベストスコア：${score}`;
+  newRecordText.classList.remove('hidden');
+} else {
+  bestScoreText.textContent = `ベストスコア：${bestScore}`;
+  newRecordText.classList.add('hidden');
+}
   showOnly('result');
   document.getElementById('retryBtn').disabled = true;
 document.getElementById('homeBtn').disabled = true;
