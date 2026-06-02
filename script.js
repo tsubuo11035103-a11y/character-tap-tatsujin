@@ -262,10 +262,9 @@ function endGame() {
   finalScore.textContent = score;
   rankText.textContent = getRank(score);
   showOnly('result');
-  if (soundOn) {
-    play('drumroll');
-    setTimeout(() => play('fanfare'), 1050);
-  }
+if (soundOn) {
+  play('fanfare');
+}
 }
 
 function getRank(s) {
