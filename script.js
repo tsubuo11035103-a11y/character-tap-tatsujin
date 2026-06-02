@@ -296,6 +296,7 @@ function loop(ms) {
   drawBackground(dt);
   //if (state === 'title') drawDemo(dt, ms);
   if (state === 'playing') updateGame(dt, ms);
+  drawEffects(ms);
   requestAnimationFrame(loop);
 }
 
