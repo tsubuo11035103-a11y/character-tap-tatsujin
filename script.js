@@ -59,6 +59,7 @@ let blackEventActive = false;
 let blackTarget = null;
 let lastTapSoundMs = 0;
 let demoTarget = null;
+let effects = [];
 
 function loadImage(src) {
   return new Promise((resolve) => {
@@ -424,7 +425,7 @@ function onPointerDown(e) {
     hit.hp--;
     throttledTapSound();
     makeBurst(hit.screen.x, hit.screen.y, '#ff1744');
-showImpactEmoji(hit.screen.x, hit.screen.y);
+addImpact(hit.screen.x, hit.screen.y);
     if (hit.hp <= 0) defeatBlack(hit);
     return;
   }
@@ -520,6 +521,33 @@ function showImpactEmoji(x, y) {
   ctx.shadowBlur = 18;
   ctx.fillText('💥', x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 50);
   ctx.restore();
+}
+function addImpact(x, y) {
+  effects.push({
+    x: x + (Math.random() - 0.5) * 60,
+    y: y + (Math.random() - 0.5) * 60,
+    start: performance.now(),
+    duration: 420
+  });
+}
+
+function drawEffects(ms) {
+  effects = effects.filter(e => {
+    const p = (ms - e.start) / e.duration;
+    if (p >= 1) return false;
+
+    ctx.save();
+    ctx.globalAlpha = 1 - p;
+    ctx.font = `${Math.max(42, W * 0.06) * (1 + p * 0.6)}px system-ui`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = '#ff1744';
+    ctx.shadowBlur = 20;
+    ctx.fillText('💥', e.x, e.y - p * 36);
+    ctx.restore();
+
+    return true;
+  });
 }
 
 let messageTimer = null;
