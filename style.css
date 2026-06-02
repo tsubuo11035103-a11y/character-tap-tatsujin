@@ -480,3 +480,37 @@ input[type="file"] { display: none; }
     font-size: 14px;
   }
 }
+.rank-first {
+  color: #ffffff;
+}
+
+.rank-beginner {
+  color: #9be7ff;
+}
+
+.rank-good {
+  color: #7cff9b;
+}
+
+.rank-great {
+  color: #d084ff;
+}
+
+.rank-master {
+  color: #ffe66d;
+}
+
+.rank-super {
+  color: #ff9df2;
+  text-shadow:
+    0 0 10px #ff4dca,
+    0 0 18px #00e5ff;
+}
+
+.rank-legend {
+  color: #fff36d;
+  text-shadow:
+    0 0 10px #fff36d,
+    0 0 18px #ff4dca,
+    0 0 28px #00e5ff;
+}
