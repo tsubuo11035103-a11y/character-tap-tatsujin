@@ -262,6 +262,13 @@ function endGame() {
   finalScore.textContent = score;
   rankText.textContent = getRank(score);
   showOnly('result');
+  document.getElementById('retryBtn').disabled = true;
+document.getElementById('homeBtn').disabled = true;
+
+setTimeout(() => {
+  document.getElementById('retryBtn').disabled = false;
+  document.getElementById('homeBtn').disabled = false;
+}, 900);
 if (soundOn) {
   play('fanfare');
 }
