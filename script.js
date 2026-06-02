@@ -2,6 +2,7 @@ const ASSETS = {
   bg: 'assets/bg/IMG_0896.png',
   tsubuo: ['assets/characters/tsubuo1.png', 'assets/characters/tsubuo2.png'],
   black: ['assets/characters/black1.png', 'assets/characters/black2.png'],
+  blackDefeat: 'assets/characters/black_defeat.png',
   sounds: {
     bgm: 'assets/sounds/8-bit_Aggressive1.mp3',
     boss: 'assets/sounds/kiki.mp3',
@@ -38,7 +39,7 @@ const hardBtn = document.getElementById('hardBtn');
 const backToTitleBtn = document.getElementById('backToTitleBtn');
 
 let W = 0, H = 0, DPR = 1;
-let images = { bg: null, tsubuo: [], black: [], custom: null };
+let images = { bg: null, tsubuo: [], black: [], blackDefeat: null, custom: null };
 let audio = {};
 let soundOn = true;
 let unlocked = false;
@@ -82,6 +83,7 @@ async function init() {
   images.bg = await loadImage(ASSETS.bg);
   images.tsubuo = (await Promise.all(ASSETS.tsubuo.map(loadImage))).filter(Boolean);
   images.black = (await Promise.all(ASSETS.black.map(loadImage))).filter(Boolean);
+  images.blackDefeat = await loadImage(ASSETS.blackDefeat);
 
   audio = {
     bgm: makeAudio(ASSETS.sounds.bgm, true, 0.38),
@@ -422,6 +424,7 @@ function onPointerDown(e) {
     hit.hp--;
     throttledTapSound();
     makeBurst(hit.screen.x, hit.screen.y, '#ff1744');
+showImpactEmoji(hit.screen.x, hit.screen.y);
     if (hit.hp <= 0) defeatBlack(hit);
     return;
   }
@@ -469,7 +472,7 @@ function defeatBlack(t) {
 
 function flyAwayAnimation(x, y) {
   const start = performance.now();
-  const img = images.black[0];
+  const img = images.blackDefeat || images.black[0];
   function anim(ms) {
     const p = Math.min(1, (ms - start) / 750);
     drawBackground(0);
@@ -506,6 +509,16 @@ function makeBurst(x, y, color) {
     ctx.lineTo(x + Math.cos(a) * 44, y + Math.sin(a) * 44);
     ctx.stroke();
   }
+  ctx.restore();
+}
+function showImpactEmoji(x, y) {
+  ctx.save();
+  ctx.font = `${Math.max(36, W * 0.055)}px system-ui`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.shadowColor = '#ff1744';
+  ctx.shadowBlur = 18;
+  ctx.fillText('💥', x + (Math.random() - 0.5) * 50, y + (Math.random() - 0.5) * 50);
   ctx.restore();
 }
 
