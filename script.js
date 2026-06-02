@@ -376,9 +376,9 @@ function updateGame(dt, ms) {
   if (!blackEventDone && !blackEventActive && timeLeft <= 16 && timeLeft >= 12) startBlackEvent();
 
   if (!blackEventActive) {
-    const baseInterval = hardMode ? 0.34 : 0.50;
+    const baseInterval = hardMode ? 0.24 : 0.50;
     const lastRush = timeLeft <= 5;
-    const interval = lastRush ? (hardMode ? 0.14 : 0.22) : baseInterval;
+    const interval = lastRush ? (hardMode ? 0.09 : 0.22) : baseInterval;
     spawnTimer -= dt;
     while (spawnTimer <= 0) {
       spawnTarget(lastRush);
