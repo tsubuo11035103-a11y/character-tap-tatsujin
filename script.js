@@ -6,6 +6,7 @@ const ASSETS = {
   sounds: {
     bgm: 'assets/sounds/8-bit_Aggressive1.mp3',
     boss: 'assets/sounds/kiki.mp3',
+    defeat: 'assets/sounds/defeat.mp3',
     countdown: 'assets/sounds/countdown.mp3',
     decide: 'assets/sounds/kettei.mp3',
     tap: 'assets/sounds/don.mp3',
@@ -89,6 +90,7 @@ async function init() {
   audio = {
     bgm: makeAudio(ASSETS.sounds.bgm, true, 0.38),
     boss: makeAudio(ASSETS.sounds.boss, true, 0.5),
+    defeat: makeAudio(ASSETS.sounds.defeat, false, 0.9),
     countdown: makeAudio(ASSETS.sounds.countdown, false, 0.9),
     decide: makeAudio(ASSETS.sounds.decide, false, 0.75),
     tap: makeAudio(ASSETS.sounds.tap, false, 0.65),
@@ -469,7 +471,7 @@ function defeatBlack(t) {
   t.hit = true;
   score += 20;
   stopAudio('boss');
-  play('kiran');
+  play('defeat');
 
   showMessage('撃破！', 600);
 
@@ -485,6 +487,7 @@ function defeatBlack(t) {
 }
 
 function flyAwayAnimation(x, y) {
+  let sparkPlayed = false;
   const start = performance.now();
   const img = images.blackDefeat || images.black[0];
   function anim(ms) {
@@ -502,8 +505,14 @@ function flyAwayAnimation(x, y) {
     ctx.font = `${Math.max(24, W * 0.04)}px system-ui`;
 
     if (p > 0.9) {
+
   ctx.font = `${Math.max(32, W * 0.05)}px system-ui`;
   ctx.fillText('✨', nx, ny);
+
+  if (!sparkPlayed) {
+    sparkPlayed = true;
+    play('kiran');
+  }
 }
     
     if (p < 1 && state === 'playing') requestAnimationFrame(anim);
