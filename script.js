@@ -300,7 +300,7 @@ function getRank(s) {
     if (s >= 16) return 'みならい';
     return 'はじめてさん';
   }
-  if (s >= 121) return 'でんせつ！！';
+  if (s >= 111) return 'でんせつ！！';
   if (s >= 91) return 'スーパーたつじん！';
   if (s >= 66) return 'たつじん！';
   if (s >= 46) return 'すごい！';
