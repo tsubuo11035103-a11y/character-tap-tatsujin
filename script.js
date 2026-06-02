@@ -139,7 +139,7 @@ secretArea.addEventListener('click', (e) => {
     secretArea.classList.add('hidden');
   }
 });
-  document.getElementById('unlockBtn').onclick = () => {
+document.getElementById('unlockBtn').onclick = async () => {
   const v = document.getElementById('secretInput').value.trim();
   const msg = document.getElementById('secretMessage');
 
@@ -149,17 +149,28 @@ secretArea.addEventListener('click', (e) => {
     return;
   }
 
-  if (v === SECRET_WORD) {
-    unlocked = true;
-    play('decide');
-    msg.textContent = '解放したよ！';
-    unlockedArea.classList.remove('hidden');
-    secretArea.classList.add('hidden');
-    document.querySelector('.title-panel .mini')?.classList.remove('hidden');
-    showMessage('合言葉OK！', 1100);
-  } else {
-    msg.textContent = '合言葉がちがうよ！';
-    play('decide');
+  try {
+    const res = await fetch('/api/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: v })
+    });
+
+    const data = await res.json();
+
+    if (data.ok) {
+      unlocked = true;
+      play('decide');
+      msg.textContent = '解放したよ！';
+      unlockedArea.classList.remove('hidden');
+      secretArea.classList.add('hidden');
+      showMessage('合言葉OK！', 1100);
+    } else {
+      msg.textContent = '合言葉がちがうよ！';
+      play('decide');
+    }
+  } catch {
+    msg.textContent = '通信エラーだよ！';
   }
 };
   soundBtn.onclick = () => {
