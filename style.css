@@ -185,12 +185,15 @@ input[type="file"] { display: none; }
 }
 /* iPhone横画面向け：HUDを中央寄せ */
 .hud {
-  top: max(24px, env(safe-area-inset-top));
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
-  width: min(880px, 74vw);
-  padding: 8px 0;
+  position: absolute !important;
+  top: max(8px, env(safe-area-inset-top)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  transform: none !important;
+  padding: 8px 24px !important;
+  display: flex !important;
+  justify-content: space-between !important;
 }
 
 /* タイトルへボタンは小さく */
