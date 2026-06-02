@@ -159,13 +159,15 @@ document.getElementById('unlockBtn').onclick = async () => {
     const data = await res.json();
 
     if (data.ok) {
-      unlocked = true;
-      play('decide');
-      msg.textContent = '解放したよ！';
-      unlockedArea.classList.remove('hidden');
-      secretArea.classList.add('hidden');
-      showMessage('合言葉OK！', 1100);
-    } else {
+  unlocked = true;
+  localStorage.setItem('premiumUnlocked', 'true');
+
+  play('decide');
+  msg.textContent = '解放したよ！';
+  unlockedArea.classList.remove('hidden');
+  secretArea.classList.add('hidden');
+  showMessage('合言葉OK！', 1100);
+} else {
       msg.textContent = '合言葉がちがうよ！';
       play('decide');
     }
@@ -179,10 +181,11 @@ document.getElementById('unlockBtn').onclick = async () => {
     if (soundOn) play('decide'); else stopAllAudio();
   };
   hardBtn.onclick = () => {
-    hardMode = !hardMode;
-    hardBtn.textContent = `高難易度：${hardMode ? 'ON' : 'OFF'}`;
-    play('decide');
-  };
+  hardMode = !hardMode;
+  localStorage.setItem('hardMode', String(hardMode));
+  hardBtn.textContent = `高難易度：${hardMode ? 'ON' : 'OFF'}`;
+  play('decide');
+};
 document.getElementById('imageInput').onchange = (e) => {
   const file = e.target.files?.[0];
   if (!file) return;
@@ -202,7 +205,19 @@ document.getElementById('imageInput').onchange = (e) => {
   backToTitleBtn.onclick = () => {
   showTitle();
 };
+  restorePremiumState();
   canvas.addEventListener('pointerdown', onPointerDown);
+}
+function restorePremiumState() {
+  const savedUnlocked = localStorage.getItem('premiumUnlocked') === 'true';
+
+  if (savedUnlocked) {
+    unlocked = true;
+    unlockedArea.classList.remove('hidden');
+  }
+
+  hardMode = localStorage.getItem('hardMode') === 'true';
+  hardBtn.textContent = `高難易度：${hardMode ? 'ON' : 'OFF'}`;
 }
 
 function play(name, restart = true) {
