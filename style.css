@@ -439,3 +439,44 @@ input[type="file"] { display: none; }
   color: #ff4dca;
   text-shadow: 0 0 10px #00e5ff;
 }
+@media (orientation: landscape) and (max-height: 520px) {
+  .result-panel {
+    width: min(620px, 68vw);
+    max-height: calc(100dvh - 10px);
+    padding: 8px 22px;
+    overflow: hidden;
+  }
+
+  .result-panel .score-big {
+    font-size: clamp(28px, 4.4vw, 44px);
+    margin: 0 0 3px;
+    line-height: 1;
+  }
+
+  .best-score-text,
+  .new-record-text {
+    margin: 2px 0;
+    font-size: 13px;
+    line-height: 1.1;
+  }
+
+  .rank-box {
+    margin: 5px auto 7px;
+    padding: 8px 12px;
+  }
+
+  .rank-label {
+    font-size: 12px;
+  }
+
+  .rank-text {
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1;
+  }
+
+  .result-panel button {
+    padding: 7px 12px;
+    margin: 4px auto;
+    font-size: 14px;
+  }
+}
