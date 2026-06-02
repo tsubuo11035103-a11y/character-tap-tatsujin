@@ -304,7 +304,9 @@ function endGame() {
   hud.classList.add('hidden');
   backToTitleBtn.classList.add('hidden');
   finalScore.textContent = score;
-  rankText.textContent = getRank(score);
+  const rank = getRank(score);
+rankText.textContent = rank;
+rankText.className = 'rank-text ' + getRankClass(rank);
   const bestScore = Number(localStorage.getItem('bestScore') || 0);
 
 if (score > bestScore) {
@@ -326,6 +328,15 @@ setTimeout(() => {
 if (soundOn) {
   play('fanfare');
 }
+}
+function getRankClass(rank) {
+  if (rank.includes('でんせつ')) return 'rank-legend';
+  if (rank.includes('スーパー')) return 'rank-super';
+  if (rank.includes('たつじん')) return 'rank-master';
+  if (rank.includes('すごい')) return 'rank-great';
+  if (rank.includes('じょうず')) return 'rank-good';
+  if (rank.includes('みならい')) return 'rank-beginner';
+  return 'rank-first';
 }
 
 function getRank(s) {
