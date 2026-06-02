@@ -161,6 +161,8 @@ document.getElementById('unlockBtn').onclick = async () => {
     if (data.ok) {
   unlocked = true;
   localStorage.setItem('premiumUnlocked', 'true');
+      document.getElementById('noteLink').textContent =
+  'つぶおのnote';
 
   play('decide');
   msg.textContent = '解放したよ！';
@@ -214,6 +216,13 @@ function restorePremiumState() {
   if (savedUnlocked) {
     unlocked = true;
     unlockedArea.classList.remove('hidden');
+    const noteLink = document.getElementById('noteLink');
+
+if (savedUnlocked) {
+  noteLink.textContent = 'つぶおのnote';
+} else {
+  noteLink.textContent = '有料版を見る';
+}
   }
 
   hardMode = localStorage.getItem('hardMode') === 'true';
