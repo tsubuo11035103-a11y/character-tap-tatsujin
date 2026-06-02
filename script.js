@@ -17,7 +17,6 @@ const ASSETS = {
   }
 };
 
-const SECRET_WORD = 'SECRET-TSUBUO-2026';
 const GAME_SECONDS = 30;
 
 const canvas = document.getElementById('gameCanvas');
