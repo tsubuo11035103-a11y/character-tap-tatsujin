@@ -464,12 +464,18 @@ function defeatBlack(t) {
   score += 20;
   stopAudio('boss');
   play('kiran');
-  showMessage('おぼえてろー！', 1600);
-  flyAwayAnimation(t.screen.x, t.screen.y);
+
+  showMessage('撃破！', 600);
+
+  setTimeout(() => {
+    showMessage('おぼえてろー！', 1400);
+    flyAwayAnimation(t.screen.x, t.screen.y);
+  }, 550);
+
   setTimeout(() => {
     blackEventActive = false;
     if (state === 'playing' && soundOn) audio.bgm.play().catch(() => {});
-  }, 900);
+  }, 1400);
 }
 
 function flyAwayAnimation(x, y) {
