@@ -405,3 +405,14 @@ input[type="file"] { display: none; }
   text-shadow: 0 0 8px #ff4dca;
   word-break: break-all;
 }
+.note-link{
+  display:block;
+  margin-top:12px;
+  color:#ffd86b;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.note-link:hover{
+  text-decoration:underline;
+}
