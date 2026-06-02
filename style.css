@@ -317,11 +317,18 @@ input[type="file"] { display: none; }
     margin: 5px auto;
     font-size: 14px;
   }
+  .selected-file-name {
+  margin: 6px 0 10px;
+  font-size: 13px;
+  color: #ffe66d;
+  text-shadow: 0 0 8px #ff4dca;
+  word-break: break-all;
+}
 
   .title-panel {
-    max-height: calc(100dvh - 12px);
-    overflow: hidden;
-  }
+  max-height: calc(100dvh - 12px);
+  overflow-y: auto;
+}
 }
 @media (orientation: landscape) and (max-height: 520px) {
   .secret-area:not(.hidden) {
