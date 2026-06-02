@@ -397,3 +397,11 @@ input[type="file"] { display: none; }
   border-radius: 50%;
   font-size: 20px;
 }
+.selected-file-name {
+  margin: 6px 0 10px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffe66d;
+  text-shadow: 0 0 8px #ff4dca;
+  word-break: break-all;
+}
