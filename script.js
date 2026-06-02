@@ -183,16 +183,22 @@ document.getElementById('unlockBtn').onclick = async () => {
     hardBtn.textContent = `高難易度：${hardMode ? 'ON' : 'OFF'}`;
     play('decide');
   };
-  document.getElementById('imageInput').onchange = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    loadImage(url).then(img => {
-      images.custom = img;
-      play('decide');
-      showMessage('画像セット！', 1000);
-    });
-  };
+document.getElementById('imageInput').onchange = (e) => {
+  const file = e.target.files?.[0];
+  if (!file) return;
+
+  const nameEl = document.getElementById('selectedFileName');
+  if (nameEl) {
+    nameEl.textContent = `選択中：${file.name}`;
+  }
+
+  const url = URL.createObjectURL(file);
+  loadImage(url).then(img => {
+    images.custom = img;
+    play('decide');
+    showMessage('画像セット！', 1000);
+  });
+};
   backToTitleBtn.onclick = () => {
   showTitle();
 };
