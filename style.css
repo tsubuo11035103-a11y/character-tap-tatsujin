@@ -405,14 +405,22 @@ input[type="file"] { display: none; }
   text-shadow: 0 0 8px #ff4dca;
   word-break: break-all;
 }
-.note-link{
-  display:block;
-  margin-top:12px;
-  color:#ffd86b;
-  font-weight:700;
-  text-decoration:none;
+.note-link {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+
+  color: #ffe66d;
+  font-size: 14px;
+  font-weight: 900;
+
+  text-decoration: none;
+
+  text-shadow:
+    0 0 8px rgba(255, 230, 109, .7),
+    0 0 18px rgba(255, 77, 202, .4);
 }
 
-.note-link:hover{
-  text-decoration:underline;
+.note-link:hover {
+  text-decoration: underline;
 }
