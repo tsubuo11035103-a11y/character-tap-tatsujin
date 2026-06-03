@@ -434,11 +434,29 @@ function updateGame(dt, ms) {
   }
 
   for (const t of targets) t.z += dt * t.speed;
-  targets = targets.filter(t => {
-    if (t.hit) return false;
-    if (t.z > 1.35) { combo = 0; return false; }
-    return true;
-  });
+targets = targets.filter(t => {
+  if (t.hit) return false;
+
+  if (t.z > 1.35) {
+    combo = 0;
+
+    if (t.type === 'black') {
+      blackEventActive = false;
+      blackTarget = null;
+      stopAudio('boss');
+
+      if (state === 'playing' && soundOn) {
+        audio.bgm.play().catch(() => {});
+      }
+
+      showMessage('逃げられた！', 700);
+    }
+
+    return false;
+  }
+
+  return true;
+});
 
   updateHUD();
   targets.sort((a,b) => a.z - b.z).forEach(t => drawTarget(t, ms));
