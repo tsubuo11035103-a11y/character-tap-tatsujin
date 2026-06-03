@@ -449,7 +449,7 @@ targets = targets.filter(t => {
         audio.bgm.play().catch(() => {});
       }
 
-      showMessage('逃げられた！', 700);
+      showMessage('よわいなー！', 700);
     }
 
     return false;
