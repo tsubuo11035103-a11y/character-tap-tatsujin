@@ -63,6 +63,10 @@ let lastTapSoundMs = 0;
 let demoTarget = null;
 let effects = [];
 
+function worldYOffset() {
+  return -H * 0.08;
+}
+
 function loadImage(src) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -480,8 +484,9 @@ function drawTarget(t, ms) {
   const frames = isBlack ? images.black : (images.custom ? [images.custom] : images.tsubuo);
   const img = frames.length ? frames[Math.floor(ms / 140) % frames.length] : null;
   const cx = W / 2;
-  const horizon = H * 0.48;
-  const y = horizon + Math.pow(t.z, 1.7) * H * 0.45;
+  const offsetY = worldYOffset();
+const horizon = H * 0.48 + offsetY;
+const y = horizon + Math.pow(t.z, 1.7) * H * 0.45;
   const x = cx + t.xOff * W * Math.pow(t.z, 1.15) + Math.sin(ms / 150 + t.wobble) * 7 * t.z;
   const size = (isBlack ? 110 : 78) + Math.pow(t.z, 1.45) * (isBlack ? 300 : 215);
   t.screen = { x, y, r: size * 0.45 };
