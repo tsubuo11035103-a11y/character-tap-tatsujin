@@ -377,7 +377,8 @@ function drawBackground(dt) {
     const scale = Math.max(W / img.width, H / img.height);
     const iw = img.width * scale;
     const ih = img.height * scale;
-    ctx.drawImage(img, (W - iw) / 2, (H - ih) / 2, iw, ih);
+    const bgY = (H - ih) / 2 - H * 0.08;
+ctx.drawImage(img, (W - iw) / 2, bgY, iw, ih);
   } else {
     const g = ctx.createLinearGradient(0, 0, 0, H);
     g.addColorStop(0, '#07081e'); g.addColorStop(1, '#16052b');
