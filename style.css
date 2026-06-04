@@ -329,6 +329,7 @@ input[type="file"] { display: none; }
   .title-panel {
   max-height: calc(100dvh - 12px);
   overflow-y: auto;
+  width: min(520px, 90vw);
 }
 }
 @media (orientation: landscape) and (max-height: 520px) {
