@@ -260,8 +260,8 @@ function showTitle() {
   blackTarget = null;
 }
 function startCountdown() {
-  play('decide');
   stopAllAudio();
+  play('decide');
   showOnly('countdown');
   hud.classList.add('hidden');
   state = 'countdown';
